@@ -20,8 +20,51 @@ The study evaluates the trade-offs of using microVMs for strong container isolat
 * `paper/`: The LaTeX source code for the final SSP end-term report.
 * `docs/`: Additional project documentation and environment setup guides.
 
-## Running the Benchmarks
+## Initial Setup
 
-The scripts in `scripts/benchmarks/` are designed to be run on a system configured with both Docker and Kata Containers (with Firecracker configured as the runtime). 
+Before running the benchmarking scripts, ensure your host environment meets the following requirements:
 
-*(Note: Ensure your environment matches the setup described in the report before running these, as they require specific block device configurations like devmapper for Kata).*
+1. **Container Runtimes:**
+   - Docker installed and running natively.
+   - Kata Containers installed with the `kata-runtime` and `firecracker` hypervisor available in your PATH.
+   - `containerd` installed with the `ctr` CLI available.
+
+2. **Storage Configuration (Crucial):**
+   - Kata Containers requires block-device backing for optimal performance. You must have the `devmapper` snapshotter configured in containerd.
+   - A devmapper thin pool named `devpool` must be active (verify with `sudo dmsetup ls`).
+
+3. **System Dependencies:**
+   - The scripts rely on various system profiling tools. Install them via your package manager:
+     - `sysstat` (provides `mpstat`, `iostat`)
+     - `linux-perf` (provides `perf` for VM-exit tracking)
+     - `python3`, `python3-pandas`, `python3-matplotlib` (for generating plots)
+
+## Running the Scripts
+
+The benchmark suite is located in the `scripts/benchmarks/` directory. Due to their nature, they must be executed with root privileges (`sudo`) to isolate CPU cores, drop caches, and read hardware performance counters.
+
+**1. Run Benchmarks:**
+Execute the desired benchmark script. Each script creates a timestamped results directory (e.g., `bench_diskio_YYYYMMDD_HHMMSS`) containing raw JSON/CSV data and a markdown summary report.
+
+```bash
+sudo ./scripts/benchmarks/benchmark_disk_io.sh
+sudo ./scripts/benchmarks/benchmark_oltp.sh
+sudo ./scripts/benchmarks/benchmark_oltp_docker.sh
+sudo ./scripts/benchmarks/benchmark_oltp_docker_tmpfs.sh
+sudo ./scripts/benchmarks/benchmark_isolation_test.sh
+```
+
+**2. Generate Plots:**
+Once the benchmarks complete, you can generate the graphs used in the report by running the Python plotting scripts. These scripts automatically read the most recent data from the `results/` directory and save the PNG graphs into `paper/figures/`.
+
+```bash
+python3 ./scripts/plots/generate_diskio_plots.py
+python3 ./scripts/plots/generate_mysql_plots.py
+```
+
+**3. Cleanup:**
+To clean up lingering containers, custom images, and temporary files without affecting your system configuration:
+
+```bash
+sudo ./scripts/cleanup.sh
+```
