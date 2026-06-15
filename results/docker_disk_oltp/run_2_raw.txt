@@ -1,0 +1,44 @@
+sysbench 1.0.20 (using system LuaJIT 2.1.0-beta3)
+
+Running the test with following options:
+Number of threads: 4
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 4 tps: 513.34 qps: 10270.42 (r/w/o: 7189.98/2053.36/1027.08) lat (ms,99%): 23.95 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 4 tps: 672.61 qps: 13453.74 (r/w/o: 9417.27/2691.25/1345.22) lat (ms,99%): 9.39 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 4 tps: 250.29 qps: 5008.32 (r/w/o: 3505.77/1001.96/500.58) lat (ms,99%): 110.66 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 4 tps: 118.70 qps: 2372.99 (r/w/o: 1661.16/474.42/237.41) lat (ms,99%): 118.92 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 4 tps: 76.59 qps: 1532.97 (r/w/o: 1073.01/306.77/153.19) lat (ms,99%): 204.11 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 4 tps: 59.10 qps: 1181.18 (r/w/o: 826.98/236.00/118.20) lat (ms,99%): 253.35 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            236754
+        write:                           67644
+        other:                           33822
+        total:                           338220
+    transactions:                        16911  (281.60 per sec.)
+    queries:                             338220 (5632.02 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          60.0522s
+    total number of events:              16911
+
+Latency (ms):
+         min:                                    4.12
+         avg:                                   14.19
+         max:                                  380.42
+         99th percentile:                      108.68
+         sum:                               239982.96
+
+Threads fairness:
+    events (avg/stddev):           4227.7500/11.65
+    execution time (avg/stddev):   59.9957/0.02
+

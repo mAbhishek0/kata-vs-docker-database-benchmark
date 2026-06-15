@@ -1,0 +1,16 @@
+
+
+Analyze events for all VMs, all VCPUs:
+
+                                 VM-EXIT    Samples  Samples%     Time%    Min Time    Max Time         Avg time 
+
+                                     msr    1439337    43.83%     9.98%      2.38us   3110.01us      5.14us ( +-   0.08% )
+                               interrupt     734328    22.36%     8.79%      2.07us   3349.94us      8.88us ( +-   0.18% )
+                                     npf     507701    15.46%    10.84%      2.58us    384.80us     15.83us ( +-   0.09% )
+                                     hlt     463572    14.12%    69.81%      1.43us   4035.07us    111.62us ( +-   0.21% )
+                                   vintr     132988     4.05%     0.55%      2.02us    151.61us      3.05us ( +-   0.12% )
+                               hypercall       5953     0.18%     0.02%      1.69us     58.11us      2.33us ( +-   0.92% )
+                                   pause         21     0.00%     0.00%      2.10us   1428.74us    148.68us ( +-  46.29% )
+
+Total Samples:3283900, Total events handled time:74120859.64us.
+

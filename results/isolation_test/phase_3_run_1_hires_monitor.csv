@@ -1,0 +1,1 @@
+timestamp,cpu0_usr,cpu0_sys,cpu0_irq,cpu0_soft,cpu0_idle,cpu1_usr,cpu1_sys,cpu1_irq,cpu1_soft,cpu1_idle,cpu2_usr,cpu2_sys,cpu2_irq,cpu2_soft,cpu2_idle,cpu3_usr,cpu3_sys,cpu3_irq,cpu3_soft,cpu3_idle,ctxt_switches,rq0,rq1,rq2,rq3,compact_stall,irq_core0,irq_core1,irq_core2,irq_core3,dirty_pages,mem_avail_mb

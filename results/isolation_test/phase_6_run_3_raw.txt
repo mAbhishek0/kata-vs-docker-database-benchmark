@@ -1,0 +1,44 @@
+sysbench 1.0.20 (using system LuaJIT 2.1.0-beta3)
+
+Running the test with following options:
+Number of threads: 4
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 4 tps: 821.22 qps: 16429.04 (r/w/o: 11501.04/3285.27/1642.73) lat (ms,99%): 44.17 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 4 tps: 756.50 qps: 15133.34 (r/w/o: 10594.03/3026.11/1513.20) lat (ms,99%): 44.98 err/s: 0.10 reconn/s: 0.00
+[ 30s ] thds: 4 tps: 747.50 qps: 14948.81 (r/w/o: 10464.11/2989.70/1495.00) lat (ms,99%): 44.98 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 4 tps: 747.25 qps: 14946.12 (r/w/o: 10462.14/2989.48/1494.49) lat (ms,99%): 44.98 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 4 tps: 754.96 qps: 15096.34 (r/w/o: 10566.80/3019.63/1509.91) lat (ms,99%): 44.98 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 4 tps: 764.70 qps: 15294.81 (r/w/o: 10706.94/3058.48/1529.39) lat (ms,99%): 44.98 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            642978
+        write:                           183706
+        other:                           91853
+        total:                           918537
+    transactions:                        45926  (765.37 per sec.)
+    queries:                             918537 (15307.76 per sec.)
+    ignored errors:                      1      (0.02 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          60.0038s
+    total number of events:              45926
+
+Latency (ms):
+         min:                                    2.36
+         avg:                                    5.22
+         max:                                   50.38
+         99th percentile:                       44.98
+         sum:                               239763.83
+
+Threads fairness:
+    events (avg/stddev):           11481.5000/35.71
+    execution time (avg/stddev):   59.9410/0.00
+
