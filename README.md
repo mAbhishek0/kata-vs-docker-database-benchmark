@@ -1,6 +1,19 @@
 # Kata Containers vs Docker: Database Performance Benchmarks
 
+[📄 Read the full IEEE formatted paper here (Final_Report.pdf)](./paper/Final_Report.pdf)
+
 This repository contains the benchmarking scripts, raw experimental results, and the final report for a comparative performance study between Kata Containers (using Firecracker microVMs) and standard Docker containers. The primary focus is on evaluating the performance overhead of hardware-level isolation for database workloads.
+
+## Visual Key Findings
+
+![MySQL TPS Comparison](./paper/figures/mysql_tps_comparison.png)
+![VM-Exit Breakdown](./paper/figures/mysql_vmexit_breakdown.png)
+
+## Executive Summary (TL;DR)
+
+- **Finding 1:** Kata Containers + Firecracker actually **outperformed** native Docker (with standard disk volumes) in OLTP throughput. While Kata introduced virtualization overhead compared to pure in-memory compute (tmpfs), its `devmapper` block storage prevented the severe I/O saturation and TPS collapse observed in native Docker.
+- **Finding 2:** The primary source of hypervisor overhead was identified as MMIO VM-exits via the `virtio-mmio` block device.
+- **Finding 3:** Despite lower peak throughput, Kata+FC provides significantly better isolation, preventing tail-latency spikes observed in native Docker under noisy neighbor conditions.
 
 ## Overview
 
