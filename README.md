@@ -46,6 +46,12 @@ The benchmark suite is located in the `scripts/benchmarks/` directory. Due to th
 **1. Run Benchmarks:**
 Execute the desired benchmark script. Each script creates a timestamped results directory (e.g., `bench_diskio_YYYYMMDD_HHMMSS`) containing raw JSON/CSV data and a markdown summary report.
 
+* **`benchmark_disk_io.sh`**: Runs `fio` to compare raw disk I/O performance between Docker native volumes and Kata+FC devmapper block devices.
+* **`benchmark_oltp.sh`**: Runs the `sysbench` OLTP workload on a MySQL database inside a Kata+Firecracker microVM, while profiling KVM VM-exits.
+* **`benchmark_oltp_docker.sh`**: The native Docker baseline. Runs the `sysbench` workload on a host disk volume.
+* **`benchmark_oltp_docker_tmpfs.sh`**: Runs the `sysbench` workload on native Docker using a `tmpfs` RAM disk to eliminate disk I/O bottlenecks.
+* **`benchmark_isolation_test.sh`**: Investigates Docker performance variance by sequentially applying and reverting host tunings (THP, NUMA balancing, CPU isolation).
+
 ```bash
 sudo ./scripts/benchmarks/benchmark_disk_io.sh
 sudo ./scripts/benchmarks/benchmark_oltp.sh
